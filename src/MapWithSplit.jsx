@@ -7,11 +7,29 @@ const MapWithSplit = ({ layer1, layer2 }) => {
   const mapRef = useRef(null);
   const mapContainerRef = useRef(null);
   const [error, setError] = useState(null);
+  const [center, setCenter] = useState([51.505, -0.09]);
+
+  useEffect(() => {
+    // Check if Browser Support Geolocation API
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // Get current user location
+          setCenter([position.coords.latitude, position.coords.longitude]);
+        },
+        (err) => {
+          console.error("Error getting user's location:", err);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }, []);
 
   useEffect(() => {
     if (mapContainerRef.current && !mapRef.current) {
       const map = L.map(mapContainerRef.current, {
-        center: [51.505, -0.09],
+        center: center,
         zoom: 13,
       });
 
