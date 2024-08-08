@@ -1,0 +1,117 @@
+{
+"type": "FeatureCollection",
+"features": [
+{
+"type": "Feature",
+"id": "car.104",
+"geometry": {
+"type": "MultiPolygon",
+"coordinates": [
+[
+[
+[
+3329117.16728857,
+3658612.75005553
+],
+[
+3329170.83218869,
+3658638.68686063
+],
+[
+3329152.84396085,
+3658677.24137293
+],
+[
+3329160.33910217,
+3658681.44730336
+],
+[
+3329209.20724543,
+3658582.95800684
+],
+[
+3329276.9629667,
+3658614.50253888
+],
+[
+3329303.34568601,
+3658557.72251749
+],
+[
+3329225.57655391,
+3658522.30879655
+],
+[
+3329177.99159042,
+3658619.43750002
+],
+[
+3329125.60975875,
+3658594.76284422
+],
+[
+3329117.16728857,
+3658612.75005553
+]
+]
+]
+]
+},
+"geometry_name": "geom",
+"properties": {
+"sec_name_ar": "قسم العطارين",
+"construction_date": "9-2023",
+"gov_name_ar": "محافظة الاسكندرية",
+"ssec_name_ar": "شياخه المسله شرق",
+"address": "المسلة شرق، العطارين، محافظة الإسكندرية",
+"name": "تطوير المنطقة المحيطة للمتحف اليونانى الرومانى",
+"water_tanks": "لا يوجد",
+"description": "تطوير ساحة بالواجهة الجانبية للمتحف وتنفيذ جراج بأسفلها وتطوير ورفع كفاءة واجهات المبانى بالمحيط العمرانى المباشر للمتحف اليوناني وتنفيذ اعمال الأضاءة المطلوبه",
+"tasnef": "مشاريع تطوير",
+"area_fadan": 1.833,
+"type": "خدمى",
+"employees_count": 50,
+"responsibility_range": "محافظة الإسكندرية",
+"last_data_renewal_date": "6-2024",
+"data_source": "جهاز تعمير الساحل الشمالى الأوسط",
+"postal_code": "21517",
+"building_units_count": 0,
+"above_ground_floors_count": 0,
+"building_status": "يعمل",
+"last_renewal_date": "2023-08-31T21:00:00Z",
+"connected_to_electricity": "متصل",
+"connected_to_gas": "غير متصل",
+"connected_to_sewerage": "غير متصل",
+"connected_to_water": "غير متصل",
+"building_facade_material": "acc دهانات اكريلك",
+"allocation_status": "تم التخصيص",
+"building_structure_material": "لا يوجد",
+"pdf": null,
+"photo": "تطوير المنطقة المحيطة للمتحف اليونانى الرومانى.jpg",
+"video": null,
+"layer_name": "إسكان",
+"type_layer": "area",
+"gahet_el_wlaya": "وزارة الإسكان والمرافق والمجتمعات العمرانية",
+"geha_eltab3a": "الجهاز المركزي للتعمير",
+"id_0": "104_car",
+"gahet_el_wlaya_rt": "car",
+"area_m": 7700.764,
+"gov_code": "02",
+"sec_code": "0207",
+"ssec_code": "020705",
+"x": 29.9069352287967,
+"y": 31.19872539294932
+}
+}
+],
+"totalFeatures": 1,
+"numberMatched": 1,
+"numberReturned": 1,
+"timeStamp": "2024-07-21T16:47:29.531Z",
+"crs": {
+"type": "name",
+"properties": {
+"name": "urn:ogc:def:crs:EPSG::3857"
+}
+}
+}

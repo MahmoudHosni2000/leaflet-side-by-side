@@ -1,65 +1,62 @@
-import React, { useState, useRef, useEffect } from 'react';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import 'leaflet-side-by-side';
-
+import React, { useState, useRef, useEffect } from "react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import "leaflet-side-by-side";
+import './finsh';
+import './GeoData';
+import Data from './finsh'
+import Data10 from './GeoData'
 const MapWithSplit = ({ layer1, layer2 }) => {
   const mapRef = useRef(null);
   const mapContainerRef = useRef(null);
   const [error, setError] = useState(null);
-  const [center, setCenter] = useState([51.505, -0.09]);
+  const [geoData, setGeoData] = useState(null);
 
   useEffect(() => {
-    // Check if Browser Support Geolocation API
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          // Get current user location
-          setCenter([position.coords.latitude, position.coords.longitude]);
-        },
-        (err) => {
-          console.error("Error getting user's location:", err);
-        }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
+    if (mapContainerRef.current && !mapRef.current) {
+      const map = L.map(mapContainerRef.current).setView([30.0444, 31.2357], 8);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+      }).addTo(map);
+
+
+      mapRef.current = map;
     }
   }, []);
 
   useEffect(() => {
-    if (mapContainerRef.current && !mapRef.current) {
-      const map = L.map(mapContainerRef.current, {
-        center: center,
-        zoom: 13,
-      });
+      const map = mapRef.current;
 
-      try {
-        if (layer1 && layer2) {
-          layer1.addTo(map);
-          layer2.addTo(map);
-          L.control.sideBySide(layer1, layer2).addTo(map);
-        } else {
-          throw new Error("One or both layers are undefined");
-        }
-      } catch (err) {
-        setError(err);
-      }
-      mapRef.current = map;
-    }
+      // Define the style for the GeoJSON layer
+      const geoJsonStyle = {
+        color: "red",
+        weight: 2,
+        opacity: 0.65,
+        fillOpacity: 0.4,
+      };
 
-    return () => {
-      if (mapRef.current) {
-        mapRef.current.remove(); 
-        mapRef.current = null; 
+      // Create a GeoJSON layer and add it to the map
+      
+      const geoJsonLayer = L.geoJSON(Data10, { style: geoJsonStyle }).addTo(map);
+console.log(geoJsonLayer,"test");
+
+      
+      if (layer1 && layer2) {
+        // layer1.addTo(mapRef.current);
+        // layer2.addTo(mapRef.current);
+        // L.control.sideBySide(layer1, layer2).addTo(mapRef.current);
+      } else {
+        setError(new Error("One or both layers are undefined"));
       }
-    };
-  }, [layer1, layer2]);
+    
+  }, [geoData, layer1, layer2]);
 
   return (
     <div
-      ref={mapContainerRef} 
+      ref={mapContainerRef}
       className="map-container"
-      style={{ height: '100vh' }}
+      style={{ height: "100vh" }}
     >
       {error && <div className="map-error">Error: {error.message}</div>}
     </div>
